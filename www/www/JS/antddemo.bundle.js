@@ -56,7 +56,7 @@
 
 	var _AntdRouter2 = _interopRequireDefault(_AntdRouter);
 
-	__webpack_require__(965);
+	__webpack_require__(966);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21467,6 +21467,10 @@
 
 	var _AntdLogin2 = _interopRequireDefault(_AntdLogin);
 
+	var _AntdRegist = __webpack_require__(965);
+
+	var _AntdRegist2 = _interopRequireDefault(_AntdRegist);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21490,16 +21494,17 @@
 
 	            return _react2.default.createElement(
 	                _reactRouter.Router,
-	                { history: _reactRouter.hashHistory },
+	                { history: _reactRouter.browserHistory },
+	                _react2.default.createElement(_reactRouter.Route, { path: "/(antdLogin)", component: _AntdLogin2.default }),
+	                _react2.default.createElement(_reactRouter.Route, { path: "/antdRegist", component: _AntdRegist2.default }),
 	                _react2.default.createElement(
 	                    _reactRouter.Route,
-	                    { path: "/", component: _AntdDemo2.default },
+	                    { path: "/antdDemo", component: _AntdDemo2.default },
 	                    _react2.default.createElement(_reactRouter.IndexRoute, { component: _AntdIntroduce2.default }),
-	                    _react2.default.createElement(_reactRouter.Route, { path: "antdIntroduce", component: _AntdIntroduce2.default }),
-	                    _react2.default.createElement(_reactRouter.Route, { path: "antdTable", component: _AntdTable2.default }),
-	                    _react2.default.createElement(_reactRouter.Route, { path: "antdForm", component: _AntdForm2.default })
-	                ),
-	                _react2.default.createElement(_reactRouter.Route, { path: "antdLogin", component: _AntdLogin2.default })
+	                    _react2.default.createElement(_reactRouter.Route, { path: "/antdIntroduce", component: _AntdIntroduce2.default }),
+	                    _react2.default.createElement(_reactRouter.Route, { path: "/antdTable", component: _AntdTable2.default }),
+	                    _react2.default.createElement(_reactRouter.Route, { path: "/antdForm", component: _AntdForm2.default })
+	                )
 	            );
 	        }
 	    }]);
@@ -26477,17 +26482,15 @@
 	    }, {
 	        key: "handlerClick",
 	        value: function handlerClick(e) {
-
-	            console.log("---------handlerClick---------");
-	            // this.setState({
-	            //     current:e.key 
-	            // });
+	            alert("333333333");
+	            //console.log("---------handlerClick---------");
+	            this.setState({
+	                current: e.key
+	            });
 	        }
 	    }, {
 	        key: "componentDidMount",
 	        value: function componentDidMount() {
-	            console.log("-------------componentDidMount-----------------");
-	            alert(222);
 	            this.setState({
 	                username: "Ligq222"
 	            });
@@ -116717,6 +116720,8 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _antd = __webpack_require__(229);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -116741,7 +116746,19 @@
 	            return _react2.default.createElement(
 	                "div",
 	                null,
-	                "Designed as Ant Design,\u63D0\u70BC\u548C\u670D\u52A1\u4F01\u4E1A\u7EA7\u4E2D\u540E\u53F0\u4EA7\u54C1\u7684\u4EA4\u4E92\u8BED\u8A00\u548C\u89C6\u89C9\u98CE\u683C\u3002"
+	                "Designed as Ant Design,\u63D0\u70BC\u548C\u670D\u52A1\u4F01\u4E1A\u7EA7\u4E2D\u540E\u53F0\u4EA7\u54C1\u7684\u4EA4\u4E92\u8BED\u8A00\u548C\u89C6\u89C9\u98CE\u683C\u3002",
+	                _react2.default.createElement(
+	                    "div",
+	                    null,
+	                    _react2.default.createElement(_antd.Button, { type: "primary", shape: "circle", icon: "search" }),
+	                    _react2.default.createElement(
+	                        _antd.Button,
+	                        { type: "primary", icon: "search" },
+	                        "Search"
+	                    ),
+	                    _react2.default.createElement("br", null),
+	                    _react2.default.createElement(_antd.Button, { type: "ghost", shape: "circle-outline", icon: "search" })
+	                )
 	            );
 	        }
 	    }]);
@@ -116767,6 +116784,8 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _antd = __webpack_require__(229);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -116775,24 +116794,59 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	var columns = [{ title: "姓名", dataIndex: "name", key: "name" }, { title: "年龄", dataIndex: "age", key: "age" }, { title: "性别", dataIndex: "sex", key: "sex" }];
+
 	var AntdTable = function (_React$Component) {
 	    _inherits(AntdTable, _React$Component);
 
 	    function AntdTable() {
+	        var _ref;
+
 	        _classCallCheck(this, AntdTable);
 
-	        return _possibleConstructorReturn(this, (AntdTable.__proto__ || Object.getPrototypeOf(AntdTable)).apply(this, arguments));
+	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	            args[_key] = arguments[_key];
+	        }
+
+	        var _this = _possibleConstructorReturn(this, (_ref = AntdTable.__proto__ || Object.getPrototypeOf(AntdTable)).call.apply(_ref, [this].concat(args)));
+
+	        _this.state = {
+	            data: []
+	        };
+	        return _this;
 	    }
 
 	    _createClass(AntdTable, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            // this.setState({
+	            //     username:"Ligq222"
+	            // });
+	            alert("Hi! I am here !");
+	            $.get({
+	                url: 'AntdDemo.json',
+	                datatype: 'json',
+	                success: function success(data) {
+	                    var _this2 = this;
+
+	                    alert("hahaha");
+	                    alert(data);
+	                    alert(JSON.stringify(data));
+	                    data.map(function (dat) {
+	                        _this2.state.data.push(data);
+	                    });
+
+	                    this.setState({
+	                        data: this.state.data
+	                    });
+	                }
+	            });
+	        }
+	    }, {
 	        key: "render",
 	        value: function render() {
 
-	            return _react2.default.createElement(
-	                "div",
-	                null,
-	                "\u8868\u683C\u9875\u9762"
-	            );
+	            return _react2.default.createElement(_antd.Table, { datasource: this.state.data, columns: columns });
 	        }
 	    }]);
 
@@ -116811,11 +116865,104 @@
 	    value: true
 	});
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(173);
+
+	var _antd = __webpack_require__(229);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var FormItem = _antd.Form.Item;
+
+	var AntdLogin = _antd.Form.create()(_react2.default.createClass({
+	    displayName: "AntdLogin",
+	    handlerSubmit: function handlerSubmit(e) {
+	        e.preventDefault();
+	        this.props.form.validateFields(function (err, values) {
+	            if (!err) {
+	                _reactRouter.browserHistory.push("/antdDemo");
+	            }
+	        });
+	    },
+	    render: function render() {
+	        var getFieldDecorator = this.props.form.getFieldDecorator;
+
+	        return _react2.default.createElement(
+	            _antd.Form,
+	            { onSubmit: this.handlerSubmit, className: "login-form" },
+	            _react2.default.createElement(
+	                FormItem,
+	                null,
+	                getFieldDecorator('userName', {
+	                    rules: [{ required: true, message: "Please input you username" }]
+	                })(_react2.default.createElement(_antd.Input, { addonBefore: _react2.default.createElement(_antd.Icon, { type: "user" }), placeholder: "Username" }))
+	            ),
+	            _react2.default.createElement(
+	                FormItem,
+	                null,
+	                getFieldDecorator('password', {
+	                    rules: [{ required: true, message: "Please input you password" }]
+	                })(_react2.default.createElement(_antd.Input, { addonBefore: _react2.default.createElement(_antd.Icon, { type: "lock" }), type: "password", placeholder: "Password" }))
+	            ),
+	            _react2.default.createElement(
+	                FormItem,
+	                null,
+	                getFieldDecorator('captcha', {
+	                    rules: [{ required: true, message: "Please input you captcha" }]
+	                })(_react2.default.createElement(_antd.Input, { addonBefore: _react2.default.createElement(_antd.Icon, { type: "user" }), placeholder: "Captcha" }))
+	            ),
+	            _react2.default.createElement(
+	                FormItem,
+	                null,
+	                getFieldDecorator('remember', {
+	                    valuePropName: 'checked',
+	                    initialValue: true
+	                })(_react2.default.createElement(
+	                    _antd.Checkbox,
+	                    null,
+	                    "Remember Me"
+	                )),
+	                _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { to: "/antdForgetPassword", className: "login-form-forgot" },
+	                    "Forgot password?"
+	                ),
+	                _react2.default.createElement(
+	                    _antd.Button,
+	                    { htmlType: "submit", type: "primary", className: "login-form-button" },
+	                    "Login "
+	                ),
+	                "or ",
+	                _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { to: "/antdRegist" },
+	                    "Regist now"
+	                )
+	            )
+	        );
+	    }
+	}));
+
+	exports.default = AntdLogin;
+
+/***/ },
+/* 965 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _antd = __webpack_require__(229);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -116825,54 +116972,37 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var AntdLogin = function (_React$Component) {
-	    _inherits(AntdLogin, _React$Component);
+	var AntdRegist = function (_React$Component) {
+	    _inherits(AntdRegist, _React$Component);
 
-	    function AntdLogin() {
+	    function AntdRegist() {
 	        var _ref;
 
-	        _classCallCheck(this, AntdLogin);
+	        _classCallCheck(this, AntdRegist);
 
 	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
 	            args[_key] = arguments[_key];
 	        }
 
-	        var _this = _possibleConstructorReturn(this, (_ref = AntdLogin.__proto__ || Object.getPrototypeOf(AntdLogin)).call.apply(_ref, [this].concat(args)));
-
-	        console.log("I am AntdLogin Demo!");
-	        return _this;
+	        return _possibleConstructorReturn(this, (_ref = AntdRegist.__proto__ || Object.getPrototypeOf(AntdRegist)).call.apply(_ref, [this].concat(args)));
 	    }
 
-	    _createClass(AntdLogin, [{
-	        key: "render",
-	        value: function render() {
-
-	            return _react2.default.createElement(
-	                "div",
-	                null,
-	                _react2.default.createElement("input", { type: "text", name: "username" }),
-	                _react2.default.createElement("input", { type: "password", name: "password" }),
-	                _react2.default.createElement("input", { type: "submit", value: "submit" })
-	            );
-	        }
-	    }]);
-
-	    return AntdLogin;
+	    return AntdRegist;
 	}(_react2.default.Component);
 
-	exports.default = AntdLogin;
+	exports.default = AntdRegist;
 
 /***/ },
-/* 965 */
+/* 966 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(966);
+	var content = __webpack_require__(967);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(968)(content, {});
+	var update = __webpack_require__(969)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -116889,21 +117019,21 @@
 	}
 
 /***/ },
-/* 966 */
+/* 967 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(967)();
+	exports = module.exports = __webpack_require__(968)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "@charset \"UTF-8\";\nhtml, body, div, h5, h6, p, ul, li {\n  margin: 0px;\n  padding: 0px; }\n\n.antd {\n  /* 左侧导航固定宽度 */\n  /* logo样式 */\n  /* 右侧宽度自适应 */ }\n  .antd .leftMenu {\n    position: absolute;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    background: #333;\n    width: 200px;\n    box-sizing: border-box; }\n  .antd .logo {\n    display: block;\n    margin: 20px auto;\n    transition: all 1s;\n    width: 50; }\n  .antd .logo:hover {\n    transform: rotate(360deg); }\n  .antd .rightWrap {\n    -webkit-box-sizing: border-box;\n    -moz-box-sizing: border-box;\n    box-sizing: border-box;\n    padding: 20px 20px 0 20px;\n    position: absolute;\n    top: 0;\n    left: 200px;\n    right: 0;\n    bottom: 0;\n    overflow-y: auto; }\n  .antd .right-box {\n    box-sizing: border-box;\n    padding: 20px 20px 0;\n    position: absolute;\n    top: 73px;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    overflow-y: auto; }\n  .antd .rightWrap .ant-menu-submenu {\n    float: right; }\n  .antd .chart-box {\n    margin-top: 30px; }\n  .antd .ege {\n    display: inline-block;\n    margin-top: 10px; }\n  .antd .ege a {\n    color: #009688;\n    font-size: 16px; }\n  .antd .lastPic {\n    display: block;\n    margin: 16% auto 0; }\n  .antd .ani-box {\n    text-align: center;\n    font-size: 20px; }\n  .antd .doclist {\n    line-height: 40px; }\n", ""]);
+	exports.push([module.id, "@charset \"UTF-8\";\nhtml, body, div, h5, h6, p, ul, li {\n  margin: 0px;\n  padding: 0px; }\n\n.antd {\n  /* 左侧导航固定宽度 */\n  /* logo样式 */\n  /* 右侧宽度自适应 */ }\n  .antd .leftMenu {\n    position: absolute;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    background: #333;\n    width: 200px;\n    box-sizing: border-box; }\n  .antd .logo {\n    display: block;\n    margin: 20px auto;\n    transition: all 1s;\n    width: 50; }\n  .antd .logo:hover {\n    transform: rotate(360deg); }\n  .antd .rightWrap {\n    -webkit-box-sizing: border-box;\n    -moz-box-sizing: border-box;\n    box-sizing: border-box;\n    padding: 20px 20px 0 20px;\n    position: absolute;\n    top: 0;\n    left: 200px;\n    right: 0;\n    bottom: 0;\n    overflow-y: auto; }\n  .antd .right-box {\n    box-sizing: border-box;\n    padding: 20px 20px 0;\n    position: absolute;\n    top: 73px;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    overflow-y: auto; }\n  .antd .rightWrap .ant-menu-submenu {\n    float: right; }\n  .antd .chart-box {\n    margin-top: 30px; }\n  .antd .ege {\n    display: inline-block;\n    margin-top: 10px; }\n  .antd .ege a {\n    color: #009688;\n    font-size: 16px; }\n  .antd .lastPic {\n    display: block;\n    margin: 16% auto 0; }\n  .antd .ani-box {\n    text-align: center;\n    font-size: 20px; }\n  .antd .doclist {\n    line-height: 40px; }\n  .antd .login-form {\n    max-width: 80%;\n    margin: 10% auto 0; }\n  .antd .login-form-forgot {\n    float: right; }\n  .antd .login-form-button {\n    width: 100%; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 967 */
+/* 968 */
 /***/ function(module, exports) {
 
 	/*
@@ -116959,7 +117089,7 @@
 
 
 /***/ },
-/* 968 */
+/* 969 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*

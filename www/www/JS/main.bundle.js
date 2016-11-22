@@ -53,7 +53,7 @@
 
 	var _reactDom = __webpack_require__(34);
 
-	var _Greeter = __webpack_require__(977);
+	var _Greeter = __webpack_require__(978);
 
 	var _Greeter2 = _interopRequireDefault(_Greeter);
 
@@ -21602,7 +21602,7 @@
 
 /***/ },
 
-/***/ 967:
+/***/ 968:
 /***/ function(module, exports) {
 
 	/*
@@ -21659,7 +21659,7 @@
 
 /***/ },
 
-/***/ 968:
+/***/ 969:
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -21912,7 +21912,7 @@
 
 /***/ },
 
-/***/ 977:
+/***/ 978:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21927,7 +21927,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _greeter = __webpack_require__(978);
+	var _greeter = __webpack_require__(979);
 
 	var _greeter2 = _interopRequireDefault(_greeter);
 
@@ -22045,16 +22045,16 @@
 
 /***/ },
 
-/***/ 978:
+/***/ 979:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(979);
+	var content = __webpack_require__(980);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(968)(content, {});
+	var update = __webpack_require__(969)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -22072,10 +22072,10 @@
 
 /***/ },
 
-/***/ 979:
+/***/ 980:
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(967)();
+	exports = module.exports = __webpack_require__(968)();
 	// imports
 
 

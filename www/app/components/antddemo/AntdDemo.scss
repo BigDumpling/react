@@ -84,4 +84,17 @@ html, body, div, h5, h6, p, ul, li {
         line-height: 40px;
     }
 
+    .login-form {
+        max-width: 80%;
+        margin:10% auto 0;
+    }
+
+    .login-form-forgot {
+        float: right;
+    }
+
+    .login-form-button {
+        width: 100%;
+    }
+
 }

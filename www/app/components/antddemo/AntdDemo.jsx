@@ -1,9 +1,8 @@
 import React from "react";
 import {Menu,Icon} from "antd";
-import { Router, Route, Link, hashHistory, IndexRoute, Redirect, IndexLink} from 'react-router';
+import { Router, Route, Link, browserHistory, IndexRoute, Redirect, IndexLink} from 'react-router';
 
 const SubMenu = Menu.SubMenu;
-
 class AntdDemo extends React.Component{
 
     constructor(...args){
@@ -25,14 +24,13 @@ class AntdDemo extends React.Component{
     handlerClick(e){
         alert("333333333");
         //console.log("---------handlerClick---------");
-        // this.setState({
-        //     current:e.key 
-        // });
+        this.setState({
+            current:e.key 
+        });
     }
 
 
     componentDidMount(){
-        alert("222222222222222");
         this.setState({
             username:"Ligq222"
         });
