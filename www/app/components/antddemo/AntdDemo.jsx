@@ -22,8 +22,6 @@ class AntdDemo extends React.Component{
     }
 
     handlerClick(e){
-        alert("333333333");
-        //console.log("---------handlerClick---------");
         this.setState({
             current:e.key 
         });
@@ -50,7 +48,7 @@ class AntdDemo extends React.Component{
                           >   
                           <Menu.Item key="0"><Link to="/antdIntroduce"><Icon type="mail"/>我没有子菜单</Link></Menu.Item>
                           <SubMenu key="sub1" title={<span><Icon type="bars" />主导航</span>}>
-                            <Menu.Item key="1"><Link to="/antdTable">表格</Link></Menu.Item>
+                            <Menu.Item key="1"><Link to="/antdTable">用户信息</Link></Menu.Item>
                             <Menu.Item key="2"><Link to="/antdForm">表单</Link></Menu.Item>
                           </SubMenu>
                     </Menu>
