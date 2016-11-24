@@ -41,3 +41,6 @@ npm install --save-dev html-webpack-plugin
 npm install --save-dev babel-plugin-react-transform react-transform-hmr
 
 // React(react): React.findDOMNode() 报错是因为react版本问题，使用ReactDom(react-dom):ReactDom.findDOMNode()即可
+
+//安装jquery,使用ajax
+npm install jquery --save-dev

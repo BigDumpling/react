@@ -11,7 +11,7 @@ module.exports = {
     entry: {
        main: __dirname + "/app/main.js",  //唯一入口文件
        index: __dirname + "/app/index.js",
-       user: __dirname + "/app/user.js",
+       testFlux: __dirname + "/app/testFlux.js",
        chardemo: __dirname + "/app/chardemo.js",
        antddemo: __dirname + "/app/antddemo.js"
     //    vendors: ['react','reflux','react-mixin']
