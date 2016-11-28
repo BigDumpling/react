@@ -16,7 +16,7 @@ class AntdTable extends React.Component{
 
 
     initialArgus(){
-
+        alert("hehe");
         //分页初始化设置参数
         this.pagesizes = ['5','15','25'];
         this.pagination = {
@@ -47,15 +47,16 @@ class AntdTable extends React.Component{
 
         //table参数初始化设置
         this.columns = [
-            {title:"姓名",dataIndex:"name",key:"name"},
-            {title:"年龄",dataIndex:"age",key:"age"},
-            {title:"性别",dataIndex:"sex",key:"sex"},
+            {title:"姓名",dataIndex:"name",key:"namesss"},
+            {title:"年龄",dataIndex:"age",key:"agesss"},
+            {title:"性别",dataIndex:"sex",key:"sexss"},
             {title:"操作",dataIndex:"",key:"del",render:(text,record,index)=> <CustomModal recordprop={record}></CustomModal>}
         ];
 
     }
 
     componentDidMount(){
+        alert("hahah");
         //作用域改变了，在componentDidMount里可以用this,但是在ajax里面不能用this
         var that = this;
         $.ajax({

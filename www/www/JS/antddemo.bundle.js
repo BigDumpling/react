@@ -116825,8 +116825,7 @@
 	    _createClass(AntdTable, [{
 	        key: "initialArgus",
 	        value: function initialArgus() {
-
-	            alert("23------------" + this.state.data);
+	            alert("hehe");
 	            //分页初始化设置参数
 	            this.pagesizes = ['5', '15', '25'];
 	            this.pagination = {
@@ -116853,38 +116852,28 @@
 	            };
 
 	            //table参数初始化设置
-	            this.columns = [{ title: "姓名", dataIndex: "id", key: "id" }, { title: "年龄", dataIndex: "name", key: "name" }, { title: "性别", dataIndex: "remarket", key: "remarket" }, { title: "操作", dataIndex: "", key: "del", render: function render(text, record, index) {
+	            this.columns = [{ title: "姓名", dataIndex: "name", key: "namesss" }, { title: "年龄", dataIndex: "age", key: "agesss" }, { title: "性别", dataIndex: "sex", key: "sexss" }, { title: "操作", dataIndex: "", key: "del", render: function render(text, record, index) {
 	                    return _react2.default.createElement(_CustomModal2.default, { recordprop: record });
 	                } }];
 	        }
 	    }, {
 	        key: "componentDidMount",
 	        value: function componentDidMount() {
+	            alert("hahah");
 	            //作用域改变了，在componentDidMount里可以用this,但是在ajax里面不能用this
 	            var that = this;
-	            // $.ajax({
-	            //     url:'./../AntdDemo.json',
-	            //     datatype:'json',
-	            //     success:function(data){                
-	            //         data.map( dat=> {
-	            //             that.state.data.push(dat);
-	            //         });
+	            _jquery2.default.ajax({
+	                url: './../AntdDemo.json',
+	                datatype: 'json',
+	                success: function success(data) {
+	                    data.map(function (dat) {
+	                        that.state.data.push(dat);
+	                    });
 
-	            //         that.setState({
-	            //             data:that.state.data
-	            //         });
-	            //     }
-	            // });
-
-	            // alert("data-----" + this.state.data);
-	            // alert("json data-------" + JSON.stringify(this.state.data));
-
-	            // var dat = [
-	            //            {id:"ligq1",name:21,remarket:"man"},
-	            //            {id:"qxq2",name:22,remarket:"female"}
-	            //            ];
-	            this.setState({
-	                data: [{ id: "ligq1", name: 21, remarket: "man" }, { id: "qxq2", name: 22, remarket: "female" }]
+	                    that.setState({
+	                        data: that.state.data
+	                    });
+	                }
 	            });
 	        }
 	    }, {
