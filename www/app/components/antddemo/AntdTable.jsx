@@ -70,7 +70,8 @@ class AntdTable extends React.Component{
                     data:that.state.data
                 });
             }
-        });    
+        });
+        
     }
 
     render(){
