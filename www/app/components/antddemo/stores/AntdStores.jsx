@@ -5,6 +5,7 @@ var Reflux = require("reflux");
 var AntdStores = Reflux.createStore({
     datas:[],
     listenables:[AntdActions],
+
     onGetAllUser:function () {
        var that = this;
        $.ajax({
@@ -14,58 +15,16 @@ var AntdStores = Reflux.createStore({
            jsonp:"callback",       //传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
            jsonpCallback:"jsonpCallback",       //自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
            data:{},
-           headers:{
-               "Access-Control-Allow-Origin":"*"
-           },
+           
            success:function(data){
-               data.map( (dat)=>{
-                    let da = {usrId,usrName,usrPwd,usrDisableTag,usrRemark,pass,usrType} = dat;
-                    alert("-------------da------------" + json.stringify(da));
-                    datas.push(da);
-                    alert("---------------datas---------------" + datas);
-               })
-            //    data.map( (dat)=> {
-            //        that.datas.push(dat);
-            //        that.trigger(that.datas);
-            //    })
+               data.map( dat=>that.datas.push(dat) );
+               alert("JSON datas------" + JSON.stringify(that.datas) );
+               that.trigger(that.datas);
            },
            error:function(data,status,errorThrown){
-               alert("xmlrequest.status-----------" + data.status);
-               alert("xmlrequest.readystate---------" + data.readyState);
-               alert("I am error Ajax ----------" + status);
-               alert(errorThrown);
+               alert("----you are wrong,noob!----");
            }
        }) 
-
-
-    // $.ajax({
-    //        type:'GET',
-    //        url:"./../AntdDemo.json",
-    //        datatype:'json',
-    //        data:{},
-    //        success:function(data){
-    //            alert(data);
-    //            data.map( (dat)=>{
-    //                 let da = {usrId,usrName,usrPwd,usrDisableTag,usrRemark,pass,usrType};
-    //                 da = dat;
-    //                 alert("-------------da------------" + json.stringify(da));
-    //                 datas.push(da);
-    //                 alert("---------------datas---------------" + datas);
-    //            })
-    //         //    data.map( (dat)=> {
-    //         //        that.datas.push(dat);
-    //         //        that.trigger(that.datas);
-    //         //    })
-    //        },
-    //        error:function(data,status,errorThrown){
-    //            alert("xmlrequest.status-----------" + data.status);
-    //            alert("xmlrequest.readystate---------" + data.readyState);
-    //            alert("I am error Ajax ----------" + status);
-    //            alert(errorThrown);
-    //        }
-    //    }) 
-
-
     },
 
     onModifyUser:function(){

@@ -49,9 +49,9 @@ class AntdTable extends React.Component{
 
         //table参数初始化设置
         this.columns = [
-            {title:"姓名",dataIndex:"name",key:"name"},
-            {title:"年龄",dataIndex:"age",key:"age"},
-            {title:"性别",dataIndex:"sex",key:"sex"},
+            {title:"ID",dataIndex:"usrId",key:"usrId"},
+            {title:"姓名",dataIndex:"usrName",key:"usrName"},
+            {title:"备注",dataIndex:"usrRemark",key:"usrRemark"},
             {title:"操作",dataIndex:"",key:"del",render:(text,record,index)=> <CustomModal recordprop={record} onDelete={this.handleDelete.bind(this)}></CustomModal>}
         ];
 
@@ -87,9 +87,12 @@ class AntdTable extends React.Component{
 
 
     onStatusChange(datas){
+        
         this.setState({
             data:datas
-        })
+        });
+
+        alert("AntdDemo table----datas----" + this.state.data);
     }
 
     componentWillUnmount(){

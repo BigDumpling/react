@@ -116861,7 +116861,7 @@
 	            };
 
 	            //table参数初始化设置
-	            this.columns = [{ title: "姓名", dataIndex: "name", key: "name" }, { title: "年龄", dataIndex: "age", key: "age" }, { title: "性别", dataIndex: "sex", key: "sex" }, { title: "操作", dataIndex: "", key: "del", render: function render(text, record, index) {
+	            this.columns = [{ title: "ID", dataIndex: "usrId", key: "usrId" }, { title: "姓名", dataIndex: "usrName", key: "usrName" }, { title: "备注", dataIndex: "usrRemark", key: "usrRemark" }, { title: "操作", dataIndex: "", key: "del", render: function render(text, record, index) {
 	                    return _react2.default.createElement(_CustomModal2.default, { recordprop: record, onDelete: _this2.handleDelete.bind(_this2) });
 	                } }];
 	        }
@@ -116896,9 +116896,12 @@
 	    }, {
 	        key: "onStatusChange",
 	        value: function onStatusChange(datas) {
+
 	            this.setState({
 	                data: datas
 	            });
+
+	            alert("AntdDemo table----datas----" + this.state.data);
 	        }
 	    }, {
 	        key: "componentWillUnmount",
@@ -129505,6 +129508,7 @@
 	var AntdStores = Reflux.createStore({
 	    datas: [],
 	    listenables: [_AntdActions2.default],
+
 	    onGetAllUser: function onGetAllUser() {
 	        var that = this;
 	        _jquery2.default.ajax({
@@ -129514,58 +129518,18 @@
 	            jsonp: "callback", //传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
 	            jsonpCallback: "jsonpCallback", //自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
 	            data: {},
-	            headers: {
-	                "Access-Control-Allow-Origin": "*"
-	            },
+
 	            success: function success(data) {
 	                data.map(function (dat) {
-	                    var _dat;
-
-	                    var da = (_dat = dat, usrId = _dat.usrId, usrName = _dat.usrName, usrPwd = _dat.usrPwd, usrDisableTag = _dat.usrDisableTag, usrRemark = _dat.usrRemark, pass = _dat.pass, usrType = _dat.usrType, _dat);
-	                    alert("-------------da------------" + json.stringify(da));
-	                    datas.push(da);
-	                    alert("---------------datas---------------" + datas);
+	                    return that.datas.push(dat);
 	                });
-	                //    data.map( (dat)=> {
-	                //        that.datas.push(dat);
-	                //        that.trigger(that.datas);
-	                //    })
+	                alert("JSON datas------" + JSON.stringify(that.datas));
+	                that.trigger(that.datas);
 	            },
 	            error: function error(data, status, errorThrown) {
-	                alert("xmlrequest.status-----------" + data.status);
-	                alert("xmlrequest.readystate---------" + data.readyState);
-	                alert("I am error Ajax ----------" + status);
-	                alert(errorThrown);
+	                alert("----you are wrong,noob!----");
 	            }
 	        });
-
-	        // $.ajax({
-	        //        type:'GET',
-	        //        url:"./../AntdDemo.json",
-	        //        datatype:'json',
-	        //        data:{},
-	        //        success:function(data){
-	        //            alert(data);
-	        //            data.map( (dat)=>{
-	        //                 let da = {usrId,usrName,usrPwd,usrDisableTag,usrRemark,pass,usrType};
-	        //                 da = dat;
-	        //                 alert("-------------da------------" + json.stringify(da));
-	        //                 datas.push(da);
-	        //                 alert("---------------datas---------------" + datas);
-	        //            })
-	        //         //    data.map( (dat)=> {
-	        //         //        that.datas.push(dat);
-	        //         //        that.trigger(that.datas);
-	        //         //    })
-	        //        },
-	        //        error:function(data,status,errorThrown){
-	        //            alert("xmlrequest.status-----------" + data.status);
-	        //            alert("xmlrequest.readystate---------" + data.readyState);
-	        //            alert("I am error Ajax ----------" + status);
-	        //            alert(errorThrown);
-	        //        }
-	        //    }) 
-
 	    },
 
 	    onModifyUser: function onModifyUser() {},
