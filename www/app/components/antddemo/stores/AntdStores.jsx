@@ -17,7 +17,7 @@ var AntdStores = Reflux.createStore({
            data:{},
            
            success:function(data){
-               data.map( dat=>that.datas.push(dat) );
+               data.map( dat=>that.datas.push(dat));
                alert("JSON datas------" + JSON.stringify(that.datas) );
                that.trigger(that.datas);
            },
