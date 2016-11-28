@@ -2,6 +2,8 @@ import React from "react";
 import {Table,Button} from "antd";
 import $ from "jquery";
 import CustomModal from "./CustomModal.jsx";
+import AntdActions from "./actions/AntdActions.jsx";
+import AntdStores from "./stores/AntdStores.jsx"
 
 class AntdTable extends React.Component{
 
@@ -21,7 +23,7 @@ class AntdTable extends React.Component{
         this.pagesizes = ['5','15','25'];
         this.pagination = {
             pageSizeOptions:this.pagesizes,
-            total:this.state.data.length,
+            total:this.state.data.length === 0 ? 0 : this.state.data.length,
             showQuickJumper :true,
             showSizeChanger :true,
             onShowSizeChange(current,pageSize){
@@ -50,27 +52,48 @@ class AntdTable extends React.Component{
             {title:"姓名",dataIndex:"name",key:"name"},
             {title:"年龄",dataIndex:"age",key:"age"},
             {title:"性别",dataIndex:"sex",key:"sex"},
-            {title:"操作",dataIndex:"",key:"del",render:(text,record,index)=> <CustomModal recordprop={record}></CustomModal>}
+            {title:"操作",dataIndex:"",key:"del",render:(text,record,index)=> <CustomModal recordprop={record} onDelete={this.handleDelete.bind(this)}></CustomModal>}
         ];
 
     }
 
+    handleDelete(record){
+        alert("record--------" + record.name);
+        AntdActions.deleteUserByName(record);
+    }
+
+
+
     componentDidMount(){
         //作用域改变了，在componentDidMount里可以用this,但是在ajax里面不能用this
-        var that = this;
-        $.ajax({
-            url:'./../AntdDemo.json',
-            datatype:'json',
-            success:function(data){                
-                data.map( dat=> {
-                    that.state.data.push(dat);
-                });
+        // var that = this;
+        // $.ajax({
+        //     url:'./../AntdDemo.json',
+        //     datatype:'json',
+        //     success:function(data){                
+        //         data.map( dat=> {
+        //             that.state.data.push(dat);
+        //         });
 
-                that.setState({
-                    data:that.state.data
-                });
-            }
-        });    
+        //         that.setState({
+        //             data:that.state.data
+        //         });
+        //     }
+        // });    
+
+        this.unsubscrible = AntdStores.listen(this.onStatusChange.bind(this));
+        AntdActions.getAllUser();
+    }
+
+
+    onStatusChange(datas){
+        this.setState({
+            data:datas
+        })
+    }
+
+    componentWillUnmount(){
+        this.unsubscrible();
     }
 
     render(){

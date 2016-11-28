@@ -53,14 +53,14 @@
 
 	var _reactDom = __webpack_require__(34);
 
-	var _App = __webpack_require__(973);
+	var _App = __webpack_require__(996);
 
 	var _App2 = _interopRequireDefault(_App);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// import Greeter from "./components/greeterComponent/Greeter.jsx";
-	__webpack_require__(979);
+	__webpack_require__(1002);
 	(0, _reactDom.render)(_react2.default.createElement(_App2.default, null), document.getElementById("app"));
 
 /***/ },
@@ -21603,7 +21603,7 @@
 
 /***/ },
 
-/***/ 971:
+/***/ 994:
 /***/ function(module, exports) {
 
 	/*
@@ -21660,7 +21660,7 @@
 
 /***/ },
 
-/***/ 972:
+/***/ 995:
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -21913,7 +21913,7 @@
 
 /***/ },
 
-/***/ 973:
+/***/ 996:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21930,19 +21930,19 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _localDb = __webpack_require__(974);
+	var _localDb = __webpack_require__(997);
 
 	var _localDb2 = _interopRequireDefault(_localDb);
 
-	var _TodoHeader = __webpack_require__(975);
+	var _TodoHeader = __webpack_require__(998);
 
 	var _TodoHeader2 = _interopRequireDefault(_TodoHeader);
 
-	var _TodoMain = __webpack_require__(976);
+	var _TodoMain = __webpack_require__(999);
 
 	var _TodoMain2 = _interopRequireDefault(_TodoMain);
 
-	var _TodoFooter = __webpack_require__(978);
+	var _TodoFooter = __webpack_require__(1001);
 
 	var _TodoFooter2 = _interopRequireDefault(_TodoFooter);
 
@@ -22091,7 +22091,7 @@
 
 /***/ },
 
-/***/ 974:
+/***/ 997:
 /***/ function(module, exports) {
 
 	/**
@@ -22171,7 +22171,7 @@
 
 /***/ },
 
-/***/ 975:
+/***/ 998:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22242,7 +22242,7 @@
 
 /***/ },
 
-/***/ 976:
+/***/ 999:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22259,7 +22259,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _TodoItem = __webpack_require__(977);
+	var _TodoItem = __webpack_require__(1000);
 
 	var _TodoItem2 = _interopRequireDefault(_TodoItem);
 
@@ -22310,7 +22310,7 @@
 
 /***/ },
 
-/***/ 977:
+/***/ 1000:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22415,7 +22415,7 @@
 
 /***/ },
 
-/***/ 978:
+/***/ 1001:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22496,16 +22496,16 @@
 
 /***/ },
 
-/***/ 979:
+/***/ 1002:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(980);
+	var content = __webpack_require__(1003);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(972)(content, {});
+	var update = __webpack_require__(995)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -22523,10 +22523,10 @@
 
 /***/ },
 
-/***/ 980:
+/***/ 1003:
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(971)();
+	exports = module.exports = __webpack_require__(994)();
 	// imports
 
 

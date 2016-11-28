@@ -1,12 +1,13 @@
 import React from "react";
-import NodeList from "./NodeList.jsx"
+import NodeList from "./NodeList.jsx";
+import NoteStores from "./stores/NoteStores.jsx";
 
 export default class NodeListBox extends React.Component{
 
     constructor(...args){
         super(...args);
         this.state = {
-            notes:"I am notes"
+            notes:NoteStores.getNotes()
         }
     }
 

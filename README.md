@@ -44,3 +44,6 @@ npm install --save-dev babel-plugin-react-transform react-transform-hmr
 
 //安装jquery,使用ajax
 npm install jquery --save-dev
+
+//奇葩问题
+引入reflux模块不能使用import引入，要通过require引用

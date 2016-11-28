@@ -34,10 +34,14 @@ class CustomModal extends React.Component{
         })
     }
 
+    handleDelete(){
+        this.props.onDelete(this.props.recordprop);
+    }
+
     render(){
         return(
             <div>
-                <Button type="primary" className="custom-modal-delbutton">删除{this.props.recordprop.name}</Button>
+                <Button type="primary" className="custom-modal-delbutton" onClick={this.handleDelete.bind(this)}>删除{this.props.recordprop.name}</Button>
                 <Button type="primary" onClick={this.showModal.bind(this)}>
                     修改
                 </Button>
