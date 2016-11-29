@@ -1,5 +1,6 @@
 import AntdUserinfoActions from "./../actions/AntdUserinfoActions.jsx";
 import AntdAjax from "./AntdAjax.jsx";
+import {message} from "antd";
 import $ from "jquery";
 var Reflux = require("reflux");
 
@@ -14,15 +15,16 @@ var AntdUserinfoStores = Reflux.createStore({
            url:"http://localhost:7070/userManagement/query_all_user",
            datatype:'jsonp',
            jsonp:"callback",       //传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
-           jsonpCallback:"jsonpCallback",       //自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+           jsonpCallback:"UserinfoCallback",       //自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
            data:{},
            
            success:function(data){
+               that.datas.splice(0,that.datas.length);
                data.map( dat=>that.datas.push(dat));
                that.trigger(that.datas);
            },
            error:function(data,status,errorThrown){
-               alert("----you are wrong,noob!----");
+               message.error("查询用户列表失败！");
                that.trigger(that.datas);
            }
        }) 
@@ -33,9 +35,25 @@ var AntdUserinfoStores = Reflux.createStore({
     },
 
     onAddUser:function(values){
-        alert("---json---addUser------------" + JSON.stringify(values) );
-        var datas = AntdAjax.doGet(JSON.stringify(values),"/");
-        this.trigger(datas);
+        var that = this;
+        $.ajax({
+           type:'GET',
+           url:"http://localhost:7070/userManagement/addUser",
+           datatype:'jsonp',
+           jsonp:"callback",       //传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
+           jsonpCallback:"AddUserCallback",       //自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+           data:JSON.stringify(values),
+           
+           success:function(data){
+               message.success(data.message);
+               that.onGetAllUser();
+           },
+           error:function(XMLReq,status,data){
+               message.error("新增用户失败！");
+               that.trigger(that.datas);
+           }
+       }) 
+        
     },
 
     onGetUserByName:function(){
@@ -43,14 +61,23 @@ var AntdUserinfoStores = Reflux.createStore({
     },
 
     onDeleteUserByName:function(record){
-        alert("删除方法--------------"+record.name);
-        for(let i=0;i<this.datas.length;i++){
-            if(this.datas[i].name === record.name){
-                alert("删除的用户：" + record.name + " 是第" + i + "个");
-                this.datas.splice(i,1);
-                this.trigger(this.datas);
-            }
-        }
+        var that = this;
+        $.ajax({
+           type:'GET',
+           url:"http://localhost:7070/userManagement/deleteUserByUserId?usrId="+record.usrId,
+           datatype:'jsonp',
+           jsonp:"callback",       //传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
+           jsonpCallback:"deleteUser",       //自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+           
+           success:function(data){
+               message.success(data.message);
+               that.onGetAllUser();
+           },
+           error:function(XMLReq,status,data){
+               message.error("删除用户失败！");
+               that.trigger(that.datas);
+           }
+       }) 
     }
 })
 

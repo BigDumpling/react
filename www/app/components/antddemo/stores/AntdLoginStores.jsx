@@ -12,7 +12,6 @@ var AntdLoginStores = Reflux.createStore({
             type:'GET',
             url:'http://localhost:7070/login/index',
             dataType:'jsonp',
-            async:false,
             jsonpCallback:'loginCallback',
             data:JSON.stringify(loginForm),
 
