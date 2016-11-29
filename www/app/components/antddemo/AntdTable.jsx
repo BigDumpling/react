@@ -1,16 +1,18 @@
 import React from "react";
-import {Table,Button} from "antd";
+import {Table,Button,Modal} from "antd";
 import $ from "jquery";
 import CustomModal from "./CustomModal.jsx";
-import AntdActions from "./actions/AntdActions.jsx";
-import AntdStores from "./stores/AntdStores.jsx"
+import AntdUserinfoActions from "./actions/AntdUserinfoActions.jsx";
+import AntdUserinfoStores from "./stores/AntdUserinfoStores.jsx";
+import CustomForm from "./CustomForm.jsx";
 
 class AntdTable extends React.Component{
 
     constructor(...args){
         super(...args);
         this.state={
-            data:[]
+            data:[],
+            visible:false
         };
 
         this.initialArgus();
@@ -52,67 +54,79 @@ class AntdTable extends React.Component{
             {title:"ID",dataIndex:"usrId",key:"usrId"},
             {title:"姓名",dataIndex:"usrName",key:"usrName"},
             {title:"备注",dataIndex:"usrRemark",key:"usrRemark"},
+            {title:"邮箱",dataIndex:"usrEmail",key:"usrEmail"},
+            {title:"状态",dataIndex:"usrDisableTag",key:"usrDisableTag"},
             {title:"操作",dataIndex:"",key:"del",render:(text,record,index)=> <CustomModal recordprop={record} onDelete={this.handleDelete.bind(this)}></CustomModal>}
         ];
 
     }
 
     handleDelete(record){
-        alert("record--------" + record.name);
-        AntdActions.deleteUserByName(record);
+        alert("record--------" + record.usrId);
+        AntdUserinfoActions.deleteUserByName(record);
     }
 
 
-
     componentDidMount(){
-        //作用域改变了，在componentDidMount里可以用this,但是在ajax里面不能用this
-        // var that = this;
-        // $.ajax({
-        //     url:'./../AntdDemo.json',
-        //     datatype:'json',
-        //     success:function(data){                
-        //         data.map( dat=> {
-        //             that.state.data.push(dat);
-        //         });
-
-        //         that.setState({
-        //             data:that.state.data
-        //         });
-        //     }
-        // });    
-
-        this.unsubscrible = AntdStores.listen(this.onStatusChange.bind(this));
-        AntdActions.getAllUser();
+        this.unsubscrible = AntdUserinfoStores.listen(this.onStatusChange.bind(this));
+        AntdUserinfoActions.getAllUser();
     }
 
 
     onStatusChange(datas){
-        alert("datas-----90" + datas);
         this.setState({
             data:datas
         });
-
-        alert("AntdDemo table----datas----" + this.state.data);
     }
 
     componentWillUnmount(){
         this.unsubscrible();
     }
 
+    handlerSubmitForm(values){
+        AntdUserinfoActions.addUser(values);
+    }
+
+    handlerOk(){
+        this.setState({
+            loading:true
+        },function(){
+
+        })
+    }
+
+    handlerCancel(){
+        this.setState({
+            visible:false
+        })
+    }
+
+    openAddUserModal(){      
+        this.setState({
+            visible:true
+        });
+    }
+
     render(){
 
         return(
-            <Table dataSource={this.state.data} columns={this.columns} rowSelection={this.rowSelection} pagination={this.pagination}></Table>
+            <div>
+                <Button type="primary" size="small" onClick={this.openAddUserModal.bind(this)}>添加</Button>
+                <Table dataSource={this.state.data} columns={this.columns} rowSelection={this.rowSelection} pagination={this.pagination}></Table>
+                <Modal title="添加用户" 
+                       visible={this.state.visible} 
+                       onOk={this.handlerOk.bind(this)} 
+                       onCancel={this.handlerCancel.bind(this)}
+                       footer={[
+                           <Button type="ghost" key="back" onClick={this.handlerCancel.bind(this)}>返回</Button>,
+                           <Button type="primary" key="submit" loading={this.state.loading}>确认</Button>
+                       ]}
+                       >
+                       <CustomForm onSubmitForm={this.handlerSubmitForm.bind(this)} formdata=""></CustomForm>
+                </Modal>
+            </div>
         );
     }
-
-
-
-
-
-
-
-
 }
 
 export default AntdTable;

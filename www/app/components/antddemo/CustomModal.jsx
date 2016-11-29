@@ -22,7 +22,6 @@ class CustomModal extends React.Component{
         })
     }
 
-
     handlerOk(){
         this.setState({loading:true,})
 
@@ -41,7 +40,7 @@ class CustomModal extends React.Component{
     render(){
         return(
             <div>
-                <Button type="primary" className="custom-modal-delbutton" onClick={this.handleDelete.bind(this)}>删除{this.props.recordprop.name}</Button>
+                <Button type="primary" className="custom-modal-delbutton" onClick={this.handleDelete.bind(this)}>删除{this.props.recordprop.usrId}</Button>
                 <Button type="primary" onClick={this.showModal.bind(this)}>
                     修改
                 </Button>
@@ -54,7 +53,7 @@ class CustomModal extends React.Component{
                            <Button type="primary" key="submit" onClick={this.handlerOk.bind(this)} loading={this.state.loading}>确认</Button>
                        ]}
                        >
-                       <CustomForm formdata={this.props.recordprop}></CustomForm>
+                       <CustomForm onSubmitForm={this.props.handlerSubmitForm} formdata={this.props.recordprop}></CustomForm>
                 </Modal>
             </div>
         );

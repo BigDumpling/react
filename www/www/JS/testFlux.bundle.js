@@ -53,7 +53,7 @@
 
 	var _reactDom = __webpack_require__(34);
 
-	var _NoteApp = __webpack_require__(1007);
+	var _NoteApp = __webpack_require__(1010);
 
 	var _NoteApp2 = _interopRequireDefault(_NoteApp);
 
@@ -23669,7 +23669,7 @@
 
 /***/ },
 
-/***/ 1007:
+/***/ 1010:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23684,11 +23684,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _NoteCreationBox = __webpack_require__(1008);
+	var _NoteCreationBox = __webpack_require__(1011);
 
 	var _NoteCreationBox2 = _interopRequireDefault(_NoteCreationBox);
 
-	var _NoteListBox = __webpack_require__(1012);
+	var _NoteListBox = __webpack_require__(1015);
 
 	var _NoteListBox2 = _interopRequireDefault(_NoteListBox);
 
@@ -23767,7 +23767,7 @@
 
 /***/ },
 
-/***/ 1008:
+/***/ 1011:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23782,15 +23782,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _TextArea = __webpack_require__(1009);
+	var _TextArea = __webpack_require__(1012);
 
 	var _TextArea2 = _interopRequireDefault(_TextArea);
 
-	var _NoteActions = __webpack_require__(1011);
+	var _NoteActions = __webpack_require__(1014);
 
 	var _NoteActions2 = _interopRequireDefault(_NoteActions);
 
-	var _NoteStores = __webpack_require__(1010);
+	var _NoteStores = __webpack_require__(1013);
 
 	var _NoteStores2 = _interopRequireDefault(_NoteStores);
 
@@ -23845,7 +23845,7 @@
 
 /***/ },
 
-/***/ 1009:
+/***/ 1012:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23864,7 +23864,7 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _NoteStores = __webpack_require__(1010);
+	var _NoteStores = __webpack_require__(1013);
 
 	var _NoteStores2 = _interopRequireDefault(_NoteStores);
 
@@ -23938,12 +23938,12 @@
 
 /***/ },
 
-/***/ 1010:
+/***/ 1013:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _NoteActions = __webpack_require__(1011);
+	var _NoteActions = __webpack_require__(1014);
 
 	var _NoteActions2 = _interopRequireDefault(_NoteActions);
 
@@ -24012,7 +24012,7 @@
 
 /***/ },
 
-/***/ 1011:
+/***/ 1014:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24032,7 +24032,7 @@
 
 /***/ },
 
-/***/ 1012:
+/***/ 1015:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24047,11 +24047,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _NodeList = __webpack_require__(1013);
+	var _NodeList = __webpack_require__(1016);
 
 	var _NodeList2 = _interopRequireDefault(_NodeList);
 
-	var _NoteStores = __webpack_require__(1010);
+	var _NoteStores = __webpack_require__(1013);
 
 	var _NoteStores2 = _interopRequireDefault(_NoteStores);
 
@@ -24115,7 +24115,7 @@
 
 /***/ },
 
-/***/ 1013:
+/***/ 1016:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";

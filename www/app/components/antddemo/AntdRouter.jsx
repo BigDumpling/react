@@ -17,7 +17,7 @@ class AntdRouter extends React.Component{
                 <Route path="/(antdLogin)" component={AntdLogin}></Route>
                 <Route path="/antdRegist" component={AntdRegist}></Route>
                 <Route path="/antdDemo" component={AntdDemo}>
-                    <IndexRoute component={AntdIntroduce} />
+                    <IndexRoute component={AntdTable} />
                     <Route path="/antdIntroduce" component={AntdIntroduce} />
                     <Route path="/antdTable" component={AntdTable} />
                     <Route path="/antdForm" component={AntdForm} />
